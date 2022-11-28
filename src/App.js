@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React,{ useEffect } from 'react';
 import './App.css';
+import CurrencyRow from './CurrencyRow';
+
+const myHeaders = new Headers();
+myHeaders.append("apikey", "Y57TRtTf78cJCKb9SxDe7P3VUTT7IfCQ");
+
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow',
+  headers: myHeaders
+};
+
 
 function App() {
+  useEffect(() => {
+    fetch("https://api.apilayer.com/currency_data/convert?to={to}&from={from}&amount={amount}", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Currency</h1>
+      <CurrencyRow />
+      <div className="equals">=</div>
+      <CurrencyRow />
+    </>
   );
 }
 

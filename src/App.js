@@ -12,13 +12,13 @@ const requestOptions = {
 };
 
 
-function App() {
-  useEffect(() => {
-    fetch("https://api.apilayer.com/currency_data/convert?to={to}&from={from}&amount={amount}", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-  }, [])
+// function App() {
+//   useEffect(() => {
+//     fetch("https://api.apilayer.com/currency_data/convert?to={to}&from={from}&amount={amount}", requestOptions)
+//       .then(response => response.text())
+//       .then(result => console.log(result))
+//       .catch(error => console.log('error', error));
+//   }, [])
 
   return (
     <>
